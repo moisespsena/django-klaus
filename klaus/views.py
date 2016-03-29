@@ -68,8 +68,8 @@ class BaseRepoView(KlausTemplateView):
     def get_context_data(self, **ctx):
         context = super(BaseRepoView, self).get_context_data(**ctx)
 
-        repo = RepoManager.get_repo(self.kwargs['repo'])
-        rev = self.kwargs.get('rev')
+        repo = RepoManager.get_repo(str(self.kwargs['repo']))
+        rev = str(self.kwargs.get('rev'))
         path = self.kwargs.get('path')
         if isinstance(path, unicode):
             path = path.encode("utf-8")
